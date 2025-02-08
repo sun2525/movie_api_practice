@@ -1,0 +1,17 @@
+<h1>映画を検索</h1>
+
+<%= form_with url: root_path, method: :get, local: true do %>
+  <%= text_field_tag :query, params[:query], placeholder: "映画のタイトルを入力" %>
+  <%= submit_tag "検索" %>
+<% end %>
+
+<% if @movies.present? %>
+  <h2>検索結果:</h2>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li>
+        <%= link_to movie["title"], movie_path(movie["id"]) %> (公開日: <%= movie["release_date"] %>)
+      </li>
+    <% end %>
+  </ul>
+<% end %>
