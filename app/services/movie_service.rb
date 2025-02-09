@@ -12,7 +12,8 @@ class MovieService
     self.class.get("/search/movie", {
       query: {
         api_key: @api_key,
-        query: query
+        query: query,
+        language: 'ja-JP'
       }
     })
   end

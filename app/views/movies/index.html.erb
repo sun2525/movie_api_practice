@@ -10,8 +10,14 @@
   <ul>
     <% @movies.each do |movie| %>
       <li>
-        <%= link_to movie["title"], movie_path(movie["id"]) %> (公開日: <%= movie["release_date"] %>)
+        <img src="https://image.tmdb.org/t/p/w200<%= movie['poster_path'] %>" alt="<%= movie['title'] %>">
+        <p><strong>タイトル:</strong> <%= movie['title'] %></p>
+        <p><strong>公開日:</strong> <%= movie['release_date'] %></p>
+        <p><strong>評価:</strong> <%= movie['vote_average'] %> / 10</p>
+        <p><strong>概要:</strong> <%= movie['overview'] %></p>
       </li>
     <% end %>
   </ul>
+<% else %>
+  <p>映画が見つかりませんでした。</p>
 <% end %>
